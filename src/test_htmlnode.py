@@ -33,8 +33,8 @@ class TestLeafNode(unittest.TestCase):
 		self.assertEqual(node.to_html(), '<a href="https://www.google.com" target="_blank">click this link</a>')
 
 	def test_default(self):
-		node = LeafNode()
-		self.assertEqual((node.tag, node.value, node.props), (None, None, None))
+		node = LeafNode(None, "hello")
+		self.assertEqual((node.tag, node.value, node.props), (None, "hello", None))
 
 	def test_children(self):
 		with self.assertRaises(TypeError):
@@ -44,8 +44,8 @@ class TestLeafNode(unittest.TestCase):
 		#self.assertRaises(TypeError, LeafNode("p", "hello world", [node2], {"href": "https://www.google.com"}))
 
 	def test_none_value(self):
-		node = LeafNode ("p", None, {"href": "https://www.google.com"})
-		self.assertRaisesRegex(ValueError, "leaf node must have a value", node.to_html)
+		with self.assertRaises(ValueError):
+			node = LeafNode ("p", None, {"href": "https://www.google.com"})
 
 
 	if __name__ == "__main__":
