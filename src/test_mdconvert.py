@@ -1,4 +1,4 @@
-from mdconvert import split_nodes_delimiter
+from mdconvert import split_nodes_delimiter, extract_markdown_images, extract_markdown_links
 from textnode import TextType, TextNode
 import unittest
 
@@ -69,10 +69,66 @@ class TestMDConvert(unittest.TestCase):
                                 "_", TextType.ITALIC),
                                     "**", TextType.BOLD
                                     )
-        self.assertEqual(new_nodes, [TextNode("This has ", TextType.NORMAL),
+        self.assertEqual(new_nodes, [
+                                        TextNode("This has ", TextType.NORMAL),
                                      TextNode("bold", TextType.BOLD),
                                      TextNode(" and ", TextType.NORMAL),
                                      TextNode("code", TextType.CODE),
                                      TextNode(" and ", TextType.NORMAL),
                                      TextNode("italic", TextType.ITALIC),
-                                     TextNode(" text", TextType.NORMAL)])
+                                     TextNode(" text", TextType.NORMAL)
+                                        ]
+                                            )
+        
+    def test_order(self):
+        node = TextNode("This has **bold** and `code` and _italic_ text", TextType.NORMAL)
+        new_nodes_1 = split_nodes_delimiter(
+                        split_nodes_delimiter(
+                            split_nodes_delimiter([node], "`", TextType.CODE), 
+                                "_", TextType.ITALIC),
+                                    "**", TextType.BOLD
+                                    )
+        new_nodes_2 = split_nodes_delimiter(
+                        split_nodes_delimiter(
+                            split_nodes_delimiter([node], "**", TextType.BOLD),
+                                "`", TextType.CODE),
+                                    "_", TextType.ITALIC
+                                        )
+        new_nodes_3 = split_nodes_delimiter(
+                        split_nodes_delimiter(
+                            split_nodes_delimiter([node], "_", TextType.ITALIC),
+                                "**", TextType.BOLD),
+                                    "`", TextType.CODE
+                                        )
+        self.assertEqual(new_nodes_1, new_nodes_2, new_nodes_3)
+
+class TestExtractFromMD(unittest.TestCase):
+    def test_extract_markdown_images(self):
+        matches = extract_markdown_images(
+        "This is text with an ![image](https://i.imgur.com/zjjcJKZ.png)"
+        )
+        self.assertListEqual([("image", "https://i.imgur.com/zjjcJKZ.png")], matches)
+
+    def test_extract_multiple_images(self):
+        matches = extract_markdown_images(
+        "This is text with not one ![image](https://i.imgur.com/zjjcJKZ.png), but TWO ![images](https://uploads.dailydot.com/2024/12/Screen-Shot-2024-12-10-at-9.51.42-AM.png?q=65&auto=format&w=1240)"
+        )
+        self.assertListEqual([("image", "https://i.imgur.com/zjjcJKZ.png"), ("images", "https://uploads.dailydot.com/2024/12/Screen-Shot-2024-12-10-at-9.51.42-AM.png?q=65&auto=format&w=1240")], matches)
+
+    def test_extract_multiple_links(self):
+        matches = extract_markdown_links(
+            "This is text with a link [to github](https://github.com/s-tim-afk) and [to youtube](https://www.youtube.com)"
+        )
+        self.assertListEqual([("to github", "https://github.com/s-tim-afk"), ("to youtube", "https://www.youtube.com")], matches)
+
+    def test_mixed_link_image(self):
+        matches = extract_markdown_links(
+            "This is text with a link [to github](https://github.com/s-tim-afk) and a funny ![png](https://uploads.dailydot.com/2024/12/Screen-Shot-2024-12-10-at-9.51.42-AM.png?q=65&auto=format&w=1240)"
+        )
+        self.assertListEqual([("to github", "https://github.com/s-tim-afk")], matches)
+
+    def test_mixed_image_link(self):
+        matches = extract_markdown_images(
+            "This is text with a link [to github](https://github.com/s-tim-afk) and a funny ![png](https://uploads.dailydot.com/2024/12/Screen-Shot-2024-12-10-at-9.51.42-AM.png?q=65&auto=format&w=1240)"
+            )
+        self.assertListEqual([("png", "https://uploads.dailydot.com/2024/12/Screen-Shot-2024-12-10-at-9.51.42-AM.png?q=65&auto=format&w=1240")], matches)
