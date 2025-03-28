@@ -1,4 +1,9 @@
-from mdconvert import split_nodes_delimiter, extract_markdown_images, extract_markdown_links, split_nodes_image, split_nodes_link
+from mdconvert import (
+    split_nodes_delimiter, 
+    extract_markdown_images, 
+    extract_markdown_links, 
+    split_nodes_image, 
+    split_nodes_link)
 from textnode import TextType, TextNode
 import unittest
 
@@ -137,6 +142,40 @@ class TestMDConvert(unittest.TestCase):
             ],
             new_nodes,
         )
+
+    def test_split_empty_text(self):
+        node = TextNode("", TextType.NORMAL)
+        new_nodes = split_nodes_link([node])
+        self.assertListEqual([], new_nodes)
+
+    def test_split_no_image(self):
+        node = TextNode("hands across the water, heads across the sky", TextType.NORMAL)
+        new_nodes = split_nodes_image([node])
+        self.assertListEqual(
+            [TextNode("hands across the water, heads across the sky", TextType.NORMAL)], 
+            new_nodes
+            )
+
+    def test_split_image_beginning(self):
+        node = TextNode(
+            "![IMAGE!!!](https://imgur.com/gallery/elon-musk-with-ghislaine-maxwell-ebyXoAD) Did you see that?", 
+                        TextType.NORMAL
+                        )
+        new_nodes = split_nodes_image([node])
+        self.assertListEqual([TextNode("IMAGE!!!", TextType.IMAGE, "https://imgur.com/gallery/elon-musk-with-ghislaine-maxwell-ebyXoAD"),
+                              TextNode(" Did you see that?", TextType.NORMAL)], new_nodes)
+        
+    def test_split_invalid_syntax(self):
+        node = TextNode(
+            "hey look at this ![image(https://imgur.com/gallery/elon-musk-with-ghislaine-maxwell-ebyXoAD)", 
+                        TextType.NORMAL
+                        )
+        with self.assertRaises(ValueError):
+            new_nodes = split_nodes_image([node])
+
+    def test_invalid_texttype(self):
+        pass
+
 
 class TestExtractFromMD(unittest.TestCase):
     def test_extract_markdown_images(self):

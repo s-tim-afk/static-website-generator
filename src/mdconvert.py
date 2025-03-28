@@ -47,12 +47,17 @@ def process_image_text(text):
     if not text:
         return []
     image_info = extract_markdown_images(text)
+    if "![" in text or "](" in text:
+        if not image_info:
+            raise ValueError("invalid syntax")
     if not image_info:
         return [TextNode(text, TextType.NORMAL)]
     
     result = []
     tupl = image_info[0]
     sections = text.split(f"![{tupl[0]}]({tupl[1]})", 1)
+    if len(sections) != 2:
+        raise ValueError("invalid syntax, image section not closed")
     before = sections[0]
     after = sections[1]
 
@@ -70,12 +75,17 @@ def process_link_text(text):
     if not text:
         return []
     link_info = extract_markdown_links(text)
+    if "[" in text or "](" in text:
+        if not link_info:
+            raise ValueError("invalid syntax")
     if not link_info:
         return [TextNode(text, TextType.NORMAL)]
     
     result = []
     tupl = link_info[0]
     sections = text.split(f"[{tupl[0]}]({tupl[1]})", 1)
+    if len(sections) != 2:
+        raise ValueError("invalid syntax, image section not closed")
     before = sections[0]
     after = sections[1]
 
