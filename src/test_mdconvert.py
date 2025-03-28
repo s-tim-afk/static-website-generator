@@ -1,4 +1,4 @@
-from mdconvert import split_nodes_delimiter, extract_markdown_images, extract_markdown_links
+from mdconvert import split_nodes_delimiter, extract_markdown_images, extract_markdown_links, split_nodes_image, split_nodes_link
 from textnode import TextType, TextNode
 import unittest
 
@@ -102,6 +102,42 @@ class TestMDConvert(unittest.TestCase):
                                         )
         self.assertEqual(new_nodes_1, new_nodes_2, new_nodes_3)
 
+    def test_split_images_multiple(self):
+        node = TextNode(
+            "This is text with an ![image](https://i.imgur.com/zjjcJKZ.png) and another ![second image](https://i.imgur.com/3elNhQu.png)",
+            TextType.NORMAL,
+        )
+        new_nodes = split_nodes_image([node])
+        self.assertListEqual(
+            [
+                TextNode("This is text with an ", TextType.NORMAL),
+                TextNode("image", TextType.IMAGE, "https://i.imgur.com/zjjcJKZ.png"),
+                TextNode(" and another ", TextType.NORMAL),
+                TextNode(
+                    "second image", TextType.IMAGE, "https://i.imgur.com/3elNhQu.png"
+                ),
+            ],
+            new_nodes,
+        )
+
+    def test_split_links_multiple(self):
+        node = TextNode(
+            "This is text with a [link](https://i.imgur.com/zjjcJKZ.png) and another [second link](https://i.imgur.com/3elNhQu.png)",
+            TextType.NORMAL,
+        )
+        new_nodes = split_nodes_link([node])
+        self.assertListEqual(
+            [
+                TextNode("This is text with a ", TextType.NORMAL),
+                TextNode("link", TextType.LINK, "https://i.imgur.com/zjjcJKZ.png"),
+                TextNode(" and another ", TextType.NORMAL),
+                TextNode(
+                    "second link", TextType.LINK, "https://i.imgur.com/3elNhQu.png"
+                ),
+            ],
+            new_nodes,
+        )
+
 class TestExtractFromMD(unittest.TestCase):
     def test_extract_markdown_images(self):
         matches = extract_markdown_images(
@@ -132,3 +168,15 @@ class TestExtractFromMD(unittest.TestCase):
             "This is text with a link [to github](https://github.com/s-tim-afk) and a funny ![png](https://uploads.dailydot.com/2024/12/Screen-Shot-2024-12-10-at-9.51.42-AM.png?q=65&auto=format&w=1240)"
             )
         self.assertListEqual([("png", "https://uploads.dailydot.com/2024/12/Screen-Shot-2024-12-10-at-9.51.42-AM.png?q=65&auto=format&w=1240")], matches)
+
+    def test_no_image(self):
+        matches = extract_markdown_images(
+            "This is just text, no images no link no nothin' bub"
+        )
+        self.assertListEqual([], matches)
+
+    def test_no_link(self):
+        matches = extract_markdown_links(
+            "This is just text, no images no link no nothin' bub"
+        )
+        self.assertListEqual([], matches)

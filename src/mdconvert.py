@@ -42,3 +42,63 @@ def extract_markdown_images(text):
 def extract_markdown_links(text):
     return re.findall(r"(?<!!)\[([^\[\]]*)\]\(([^\(\)]*)\)", text)
     #return re.findall(r"\[(.*?)\]\((.*?)\)", text) <------- come back and replace these using a proper markdown module
+
+def process_image_text(text):
+    if not text:
+        return []
+    image_info = extract_markdown_images(text)
+    if not image_info:
+        return [TextNode(text, TextType.NORMAL)]
+    
+    result = []
+    tupl = image_info[0]
+    sections = text.split(f"![{tupl[0]}]({tupl[1]})", 1)
+    before = sections[0]
+    after = sections[1]
+
+    if before:
+        result.append(TextNode(before, TextType.NORMAL))
+
+    result.append(TextNode(tupl[0], TextType.IMAGE, tupl[1]))
+
+    if after:
+        result.extend(process_image_text(after))
+
+    return result
+
+def process_link_text(text):
+    if not text:
+        return []
+    link_info = extract_markdown_links(text)
+    if not link_info:
+        return [TextNode(text, TextType.NORMAL)]
+    
+    result = []
+    tupl = link_info[0]
+    sections = text.split(f"[{tupl[0]}]({tupl[1]})", 1)
+    before = sections[0]
+    after = sections[1]
+
+    if before:
+        result.append(TextNode(before, TextType.NORMAL))
+
+    result.append(TextNode(tupl[0], TextType.LINK, tupl[1]))
+
+    if after:
+        result.extend(process_link_text(after))
+
+    return result
+
+def split_nodes_image(old_nodes):
+    new_nodes = []
+    for node in old_nodes:
+        new_nodes.extend(process_image_text(node.text))
+
+    return new_nodes
+
+def split_nodes_link(old_nodes):
+    new_nodes = []
+    for node in old_nodes:
+        new_nodes.extend(process_link_text(node.text))
+
+    return new_nodes
