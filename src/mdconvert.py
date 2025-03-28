@@ -47,7 +47,7 @@ def process_image_text(text):
     if not text:
         return []
     image_info = extract_markdown_images(text)
-    if "![" in text or "](" in text:
+    if "![" in text:
         if not image_info:
             raise ValueError("invalid syntax")
     if not image_info:
@@ -102,13 +102,32 @@ def process_link_text(text):
 def split_nodes_image(old_nodes):
     new_nodes = []
     for node in old_nodes:
-        new_nodes.extend(process_image_text(node.text))
+        if node.text_type != TextType.NORMAL:
+            new_nodes.append(node)
+        else:
+            new_nodes.extend(process_image_text(node.text))
 
     return new_nodes
 
 def split_nodes_link(old_nodes):
     new_nodes = []
     for node in old_nodes:
-        new_nodes.extend(process_link_text(node.text))
+        if node.text_type != TextType.NORMAL:
+            new_nodes.append(node)
+        else:    
+            new_nodes.extend(process_link_text(node.text))
 
     return new_nodes
+
+
+def text_to_textnodes(text):
+    node = TextNode(text, TextType.NORMAL)
+    return split_nodes_delimiter(
+        split_nodes_delimiter(
+            split_nodes_delimiter(
+                split_nodes_link(
+                    split_nodes_image([node])
+                ),
+            "`", TextType.CODE),
+        "_", TextType.ITALIC),
+    "**", TextType.BOLD)
