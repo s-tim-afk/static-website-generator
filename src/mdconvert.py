@@ -131,3 +131,32 @@ def text_to_textnodes(text):
             "`", TextType.CODE),
         "_", TextType.ITALIC),
     "**", TextType.BOLD)
+
+
+#def markdown_to_blocks(text):
+#    stripped = list(map(lambda line: line.strip(), text.split("\n\n")))
+#    blocks = []
+#    for line in stripped:
+#        if "\n" in line:
+#            print(list(map(lambda x: x.translate({ord(c):None for c in ' \n\t\r'}), line.splitlines(True))))
+#            print(blocks.extend("".join(map(lambda x: x.translate({ord(c):None for c in ' \n\t\r'}), line.splitlines(True)))))
+#            blocks.extend("".join(map(lambda x: x.strip(), filter(None, re.split(r"\n", line))))) # tried some ish with the re module since its already imported! re.split confusing me though
+#            #okay turns out .strip() strips newlines as well 
+#        else:
+#            blocks.append(line)
+
+#    return blocks
+#nah man i give up on doing this nicely
+
+def markdown_to_blocks(text):
+    raw_blocks = text.split("\n\n")
+    
+    cleaned_blocks = []
+    for block in raw_blocks:
+        lines = block.split("\n")
+        cleaned_lines = [line.strip() for line in lines]
+        cleaned_block = "\n".join([line for line in cleaned_lines if line])
+        if cleaned_block:
+            cleaned_blocks.append(cleaned_block)
+    
+    return cleaned_blocks
