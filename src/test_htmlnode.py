@@ -48,9 +48,6 @@ class TestLeafNode(unittest.TestCase):
 			node = LeafNode ("p", None, {"href": "https://www.google.com"})
 
 
-	if __name__ == "__main__":
-		unittest.main()
-
 class TestParentNode(unittest.TestCase):
 	def test_to_html_with_children(self):
 		child_node = LeafNode("span", "child")
@@ -85,3 +82,6 @@ class TestParentNode(unittest.TestCase):
             node.to_html(),
             "<p><b>Bold text</b>Normal text<i>italic text</i>Normal text</p>",
         )
+
+if __name__ == "__main__":
+	unittest.main()

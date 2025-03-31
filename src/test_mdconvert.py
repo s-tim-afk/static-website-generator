@@ -240,3 +240,5 @@ class TestExtractFromMD(unittest.TestCase):
         )
         self.assertListEqual([], matches)
 
+if __name__ == "__main__":
+    unittest.main()
