@@ -10,7 +10,7 @@ def extract_title(markdown):
             return line[2:].strip()
     raise Exception("no h1 heading")
 
-def generate_page(src_path, template_path, dst_path):
+def generate_page(src_path, template_path, dst_path, basepath="/"):
     print(f"Generating page from {src_path} to {dst_path} using {template_path}")
     with open(src_path) as f:
         markdown = f.read()
@@ -23,6 +23,7 @@ def generate_page(src_path, template_path, dst_path):
     html_page = template.replace("{{ Title }}", title).replace(
         "{{ Content }}", 
         content_html)
+    html_page = html_page.replace('href="/', f'href="{basepath}').replace('src="/', f'src="{basepath}')
     os.makedirs(os.path.dirname(dst_path), exist_ok=True)
     with open(dst_path, "w+") as index_html:
         index_html.write(html_page)
