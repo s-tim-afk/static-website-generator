@@ -35,15 +35,15 @@ def main():
 		basepath = "/"
 	base_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 	static_path = os.path.join(base_dir, "static")
-	public_path = os.path.join(base_dir, "public")
-	print(f"deleting directory {public_path}")
-	shutil.rmtree(public_path)
-	copy_directory(static_path, public_path)
+	doc_path = os.path.join(base_dir, "docs")
+	print(f"deleting directory {doc_path}")
+	shutil.rmtree(doc_path)
+	copy_directory(static_path, doc_path)
 	markdown_files = find_all_markdown_files(os.path.join(base_dir, "content"))
 	for markdown_file in markdown_files:
 		src_path = markdown_file
 		template_path = os.path.join(base_dir, "template.html")
-		dst_path = os.path.join(public_path, os.path.relpath(markdown_file, os.path.join(base_dir, "content")).replace(".md", ".html"))
+		dst_path = os.path.join(doc_path, os.path.relpath(markdown_file, os.path.join(base_dir, "content")).replace(".md", ".html"))
 		generate_page(src_path, template_path, dst_path, basepath)
 
 main()
