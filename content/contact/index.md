@@ -1,4 +1,4 @@
-# Contact the Author
+# Contact Me
 
 [< Back Home](/)
 
