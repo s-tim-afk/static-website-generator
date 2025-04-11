@@ -1,5 +1,10 @@
 # The Website of All Time
 
+[Music](/blog/music)                       
+[Book Club](/blog/book_club)                       
+[Ár dTeanga](/blog/gaeilge)                       
+[Coding Projects](/blog/coding_projects)
+
 ![isn't she beautiful...](/images/samsung-17-crt-monitor.jpg)
 
 This is my little space. I guess they used to call them blogs, and I never would have imagined I would have one. I used to think _"Who the f*ck am I to have a blog? Who wants to read about me?"_. I mean, I still think that, and I hope the answer to that question is still "no-one" because there are way more rewarding things you can do with your time than read boring details about a complete stranger...
@@ -17,6 +22,7 @@ It seemed as insane to me back then as it does now, that the entire wealth of hu
 **Issuing correction on my previous statement regarding U.S. domestic terrorist 'the Unabomber'. You do not, under any circumstances, "gotta hand it to him"**.
 
 > Isn't it such a coincidence that everything from when I was young was great and perfect and everything now is scary and wrong?
+>
 >
 > I'm probably the only person to ever feel this way.
 
@@ -41,7 +47,9 @@ Probably just gonna post little updates on books I'm reading/have read. Little r
 
 ### [Music](/blog/music)
 
-I've been messing around with music production. Posting any original projects of mine would constitute cruel and unusual punishment for now, so if I post anything here, it'll be some of the covers I've done. Also maybe recommendations here too, artists I like or am currently listening to. You get the idea.
+I've been messing around with music production. Posting any original projects of mine would constitute cruel and unusual punishment for now, so if I post anything here, it'll be some of the covers I've done. Also maybe recommendations here too, artists I like or am currently listening to. You get the idea. 
+
+I might even host album rips on here if I make the site more robust. It's important to archive art and share it with the world imho...
 
 ### [Ár dTeanga](/blog/gaeilge)
 

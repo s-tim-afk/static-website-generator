@@ -1,7 +1,7 @@
 body {
     background-color: #a8d8ff;
     color: #004b4b;
-    font-family: "Luminari", "Georgia", serif;
+    font-family: "Gill Sans", sans-serif;
     line-height: 1.7;
     margin: 0;
     padding: 20px;
@@ -88,8 +88,8 @@ body {
     padding-top: 0.5em;
     padding-bottom: 0.5em;
     padding-right: 0.5em;
-    color: #ddd;
-    font-style: italic;
+    color: #ffffff;
+    font-style: normal;
   }
   
   img {
