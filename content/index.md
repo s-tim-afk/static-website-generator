@@ -26,7 +26,7 @@ It seemed as insane to me back then as it does now, that the entire wealth of hu
 >
 > I'm probably the only person to ever feel this way.
 
-I hate to have such a hopeless demeanour on the landing page of my little space, but there's a real apathy in society now that I think has really been exacerbated by the modern internet (it used to be a place filled with nobodies doing silly things that made them happy, but now everybody _posts_ with the hope of going viral and turning this tool for human connection and creativity into a source of wealth (huh, it always comes back to capital. That Marx guy might have been on to something...)). I'm not gonna fix that, so the best I can do is make something pointless; something personal and unpolished, something decidedly unviral and unprofitable.
+I hate to have such a hopeless demeanour on the landing page of my little space, but there's a real apathy in society now that I think has really been exacerbated by the modern internet. It used to be a place filled with nobodies doing silly things that made them happy, but now everybody _posts_ with the hope of going viral and turning this tool for human connection and creativity into a source of wealth (huh, it always comes back to capital. That Marx guy might have been on to something...). I'm not gonna fix that, so the best I can do is make something pointless; something personal and unpolished, something decidedly unviral and unprofitable.
 
 
 So, back to this cool little website!
