@@ -1,13 +1,10 @@
 # The Website of All Time
 
-[Music](/blog/music)                       
-[Book Club](/blog/book_club)                       
-[Ár dTeanga](/blog/gaeilge)                       
-[Coding Projects](/blog/coding_projects)
+[Music](/blog/music) &emsp; &emsp; [Cinema Club](/blog/cinema) &emsp; &emsp; [Book Club](/blog/book_club) &emsp; &emsp; [Ár dTeanga](/blog/gaeilge) &emsp; &emsp; [Coding Projects](/blog/coding_projects)
 
 ![isn't she beautiful...](/images/samsung-17-crt-monitor.jpg)
 
-This is my little space. I guess they used to call them blogs, and I never would have imagined I would have one. I used to think _"Who the f*ck am I to have a blog? Who wants to read about me?"_. I mean, I still think that, and I hope the answer to that question is still "no-one" because there are way more rewarding things you can do with your time than read boring details about a complete stranger...
+This is my little space. I guess they used to call them blogs, and I never would have imagined I would have one. I used to think _"Who the f*ck am I to have a blog? Who wants to read about me?"_. I mean, I still think that, and I hope the answer to that question is still "no-one" because there are way more rewarding things you can do with your time than read boring details about *me*...
 
 
 **YET**... here this website is. Despite everything, it still remains. That's because this is more for myself I suppose. I have a really deep faux-nostalgia for the early internet. When you would actually _surf the web_, going from webpage to webpage and feeling this sense of discovery. When the internet was a **place** that you went to - you had to sit down at the 'puter and log on and it was this whole thing, and once you got up out of your chair that was it until you logged back on. It didn't follow you everywhere you went, deploying every little psychological tactic (developed by Nazi scientists and tested on innocent men, women and children held in CIA blacksites) to try and keep your attention - to try and keep you _engaged_.
@@ -21,10 +18,7 @@ It seemed as insane to me back then as it does now, that the entire wealth of hu
 
 **Issuing correction on my previous statement regarding U.S. domestic terrorist 'the Unabomber'. You do not, under any circumstances, "gotta hand it to him"**.
 
-> Isn't it such a coincidence that everything from when I was young was great and perfect and everything now is scary and wrong?
->
->
-> I'm probably the only person to ever feel this way.
+> Isn't it such a coincidence that everything from when I was young was great and perfect and everything now is scary and wrong?<br>I'm probably the only person to ever feel this way.
 
 I hate to have such a hopeless demeanour on the landing page of my little space, but there's a real apathy in society now that I think has really been exacerbated by the modern internet. It used to be a place filled with nobodies doing silly things that made them happy, but now everybody _posts_ with the hope of going viral and turning this tool for human connection and creativity into a source of wealth (huh, it always comes back to capital. That Marx guy might have been on to something...). I'm not gonna fix that, so the best I can do is make something pointless; something personal and unpolished, something decidedly unviral and unprofitable.
 
@@ -50,6 +44,10 @@ Probably just gonna post little updates on books I'm reading/have read. Little r
 I've been messing around with music production. Posting any original projects of mine would constitute cruel and unusual punishment for now, so if I post anything here, it'll be some of the covers I've done. Also maybe recommendations here too, artists I like or am currently listening to. You get the idea. 
 
 I might even host album rips on here if I make the site more robust. It's important to archive art and share it with the world imho...
+
+### [Cinema Club](/blog/cinema)
+
+I like movies. Some recommendations will go here probably.
 
 ### [Ár dTeanga](/blog/gaeilge)
 
