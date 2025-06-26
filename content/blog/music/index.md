@@ -1,5 +1,7 @@
 # Music
 
+### [Covers >](./covers)
+
 [< Back Home](/)
 
 ## The Boredoms

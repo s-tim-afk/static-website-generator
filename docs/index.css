@@ -1,7 +1,7 @@
 body {
     background-color: #a8d8ff;
     color: #004b4b;
-    font-family: "Gill Sans", sans-serif;
+    font-family: "Bahnschrift Light", sans-serif, ui-sans-serif;
     line-height: 1.7;
     margin: 0;
     padding: 20px;
@@ -90,6 +90,11 @@ body {
     padding-right: 0.5em;
     color: #ffffff;
     font-style: normal;
+    a {
+    color: #e6b517;
+    text-decoration: none;
+    border-bottom: 2px solid #e6b517;
+  }
   }
   
   img {
