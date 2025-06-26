@@ -82,7 +82,7 @@ body {
   
   blockquote {
     background-color: #187272;
-    border-left: 4px solid #8d99ae;
+    border-left: 0px solid #8d99ae;
     padding-left: 2em;
     margin-left: 0;
     padding-top: 0.5em;
